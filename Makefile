@@ -1,7 +1,8 @@
-all: analysis
+all: plots
 
-analysis:
+plots:
 	@python plots >> stdout.log 2>> stderr.log
+	@$(foreach x,$(wildcard plots/plot_*.py),python $(x) >> stdout.log 2>> stderr.log;)
 
 clean:
 	@rm -rf build

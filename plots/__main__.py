@@ -1,4 +1,4 @@
-import plots
+import os
 
 if __name__ == '__main__':
-    plots.main()
+    if not os.path.isdir('build'): os.makedirs('build')
