@@ -1,4 +1,6 @@
-backend : SVG
+text.usetex : True
+text.latex.unicode : True
+text.latex.preamble : \usepackage{amsmath}, \usepackage[redefsymbols=false]{siunitx}
 
 text.color : 002b36
 
