@@ -112,32 +112,34 @@ class Fit:
         for key in self.meta: self._extend_meta(self.meta[key])
 
     def _extend_meta(self, meta):
-        if not isinstance(meta, list): meta = [meta]
+        if isinstance(meta, str): return None
+        if isinstance(meta, dict): meta = [meta]
         for param in meta:
-            if 'unit' in param:
-                param['siunitx'] = self._get_siunitx(param['unit'])
+            if 'name' in param: key = param['name']
+            if 'symbol' in param: key = param['symbol']
 
-            if 'symbol' in param:
-                param['tex_symbol'] = self._get_tex_symbol(param['symbol'])
+            if 'units' in param:
+                param['siunitx'] = self._get_siunitx(param['units'])
+            else:
+                param['siunitx'] = ''
+
+            param['tex_symbol'] = self._get_tex_symbol(key)
 
             if 'value' in param:
-                if 'symbol' in param: key = param['symbol']
-                if 'name' in param: key = param['name']
                 param['disply_value'] = str(self._value_transform(key)(param['value']))
 
     def _get_siunitx(self, key):
-        return self.lookup(key, self.maps['siunitx'])
+        table = self.maps['siunitx']
+        if key in table: return table[key]
+        return ''
 
     def _get_tex_symbol(self, key):
-        return self.lookup(key, self.maps['tex_symbol'])
+        table = self.maps['tex_symbol']
+        if key in table: return table[key]
+        return key
 
     def _value_transform(self, key):
         if key in self.maps['value_transforms']:
             return self.maps['value_transforms'][key]
         else:
             return self.maps['value_transforms']['__default__']
-
-    @staticmethod
-    def lookup(key, table):
-        if key in table: return table[key]
-        return key
