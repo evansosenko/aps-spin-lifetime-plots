@@ -83,5 +83,12 @@ def main():
     figure.savefig(os.path.join('build', 'plot_difference.eps'), transparent=True)
     matplotlib.pyplot.close(figure)
 
+    info = [ '$' + v['tex_symbol'] + ' = \SI{' + v['disply_value'] + '}{' + v['siunitx'] + '}$'
+        for v in plots[0].fit.meta['fixed_parameters']
+        if v['symbol'] != 'L' ]
+
+    open('build/plot_difference_info.tex', 'w').write(
+        r'\newcommand{\plotDifferenceInfo}{' + ', '.join(info) + '}')
+
 if __name__ == '__main__':
     main()
