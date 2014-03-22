@@ -3,6 +3,7 @@ import numpy
 
 class Fit:
     """
+    Loads a fit from a json file into a `Fit` object.
     """
 
     def __init__(self, path=None):
