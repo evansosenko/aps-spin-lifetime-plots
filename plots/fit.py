@@ -84,6 +84,7 @@ class Fit:
                 'T': r'\tesla',
                 'μm': r'\micro \meter',
                 'Ω': r'\ohm',
+                'mΩ': r'\milli \ohm',
                 'mS': r'\milli \siemens',
                 'Ω nm': r'\ohm \nano \meter',
                 'nm':  r'\nano \meter',
