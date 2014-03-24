@@ -13,7 +13,12 @@ class Plot(Plot):
 
     def add_parameter_overlay(self):
         rows = self.parameter_table(self.fit.meta['fixed_parameters'][0])
-        self.plt.text(0.5, 1.1, ' '.join(rows[0]),
+
+        text = []
+        text.append('(' + self.id + ') ')
+        text.append(' '.join(rows[0]))
+        text.append(', ' + self.fit.meta['contact_type'] + ' contacts')
+        self.plt.text(0.5, 1.1, ''.join(text),
             horizontalalignment='center',
             verticalalignment='top',
             transform=self.plt.axes.transAxes)
@@ -37,6 +42,9 @@ def main():
     for fit in fits[0:2]:
         fit.maps['value_transforms']['Ω_C'] = lambda x: '%.2E' % round(x, 2)
 
+    for i in (0, 1): fits[i].meta['contact_type'] = 'tunneling'
+    fits[2].meta['contact_type'] = 'transparent'
+
     plots = []
     for idx, fit in enumerate(fits):
         n, m = 3, 1
@@ -45,6 +53,10 @@ def main():
         if idx != 0: options['sharex'] = plots[idx - 1].plt
 
         plot = Plot(fit, figure.add_subplot(n, m, (m * idx + 1), **options))
+
+        plot.id = chr(97 + idx)
+        if idx == 2: plot.id = 'd'
+
         plots.append(plot)
 
     for plot in plots:
