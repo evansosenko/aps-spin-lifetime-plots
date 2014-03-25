@@ -14,8 +14,7 @@ class Plot(Plot):
 def main():
     figure = Plot.new_figure(figsize=(5,10))
 
-    data_path = lambda x: os.path.join('json', 'PhysRevLett.105.167202',
-        'fig_4' + x + '_difference.json')
+    data_path = lambda x: os.path.join('json', 'fig_4' + x + '_difference.json')
     fits = [ Fit(data_path(fig)) for fig in ['a', 'b', 'd'] ]
 
     for fit in fits[0:2]:
