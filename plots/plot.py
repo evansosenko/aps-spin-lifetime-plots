@@ -22,10 +22,10 @@ class Plot(Plot):
             transform=self.plt.axes.transAxes)
 
         rows = self.parameter_table(self.fit.meta['fitted_parameters'])
-        self.add_text_table(rows[0:2], (0.05, 0.8), (0.07, -0.1),
+        self.add_text_table(rows[0:2], (0.05, 0.9), (0.07, -0.1),
             horizontalalignment='left',
             verticalalignment='top')
 
-        self.add_text_table(rows[2:4], (0.6, 0.8), (0.07, -0.1),
+        self.add_text_table(rows[2:4], (0.6, 0.9), (0.07, -0.1),
             horizontalalignment='left',
             verticalalignment='top')
