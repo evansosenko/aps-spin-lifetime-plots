@@ -47,14 +47,8 @@ def main():
     matplotlib.pyplot.setp([ p.plt.get_xticklabels() for p in plots[0:2] ], visible=False)
 
     figure.savefig(os.path.join('build', 'plot_difference.eps'), transparent=True)
+    plots[0].fit.save_info('build/plot_difference_info.tex', 'plotDifferenceInfo')
     Plot.close_figure(figure)
-
-    info = [ '$' + v['tex_symbol'] + ' = \SI{' + v['disply_value'] + '}{' + v['siunitx'] + '}$'
-        for v in plots[0].fit.meta['fixed_parameters']
-        if v['symbol'] != 'L' ]
-
-    open('build/plot_difference_info.tex', 'w').write(
-        r'\newcommand{\plotDifferenceInfo}{' + ', '.join(info) + '}')
 
 if __name__ == '__main__':
     main()

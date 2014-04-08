@@ -42,14 +42,8 @@ def main():
     matplotlib.pyplot.setp(plots[0].plt.get_xticklabels(), visible=False)
 
     figure.savefig(os.path.join('build', 'plot_large_lifetime.eps'), transparent=True)
+    plots[0].fit.save_info('build/plot_large_lifetime_info.tex', 'plotLargeLifetimeInfo')
     Plot.close_figure(figure)
-
-    info = [ '$' + v['tex_symbol'] + ' = \SI{' + v['disply_value'] + '}{' + v['siunitx'] + '}$'
-        for v in plots[0].fit.meta['fixed_parameters']
-        if v['symbol'] != 'L' ]
-
-    open('build/plot_large_lifetime_info.tex', 'w').write(
-        r'\newcommand{\plotLargeLifetimeInfo}{' + ', '.join(info) + '}')
 
 if __name__ == '__main__':
     main()

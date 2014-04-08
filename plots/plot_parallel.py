@@ -27,14 +27,8 @@ def main():
     plot.add_parameter_overlay()
     figure.tight_layout()
     figure.savefig(os.path.join('build', 'plot_parallel.eps'), transparent=True)
+    fit.save_info('build/plot_parallel_info.tex', 'plotParallelInfo')
     Plot.close_figure(figure)
-
-    info = [ '$' + v['tex_symbol'] + ' = \SI{' + v['disply_value'] + '}{' + v['siunitx'] + '}$'
-        for v in fit.meta['fixed_parameters']
-        if v['symbol'] != 'L' ]
-
-    open('build/plot_parallel_info.tex', 'w').write(
-        r'\newcommand{\plotParallelInfo}{' + ', '.join(info) + '}')
 
 if __name__ == '__main__':
     main()
