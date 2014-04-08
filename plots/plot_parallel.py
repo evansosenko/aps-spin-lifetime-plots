@@ -8,7 +8,7 @@ class Plot(Plot):
 
     def add_ylabel(self):
         y = self.fit.meta['dependent']
-        text = r'$R_{\text{NL}}^+$' + '$(\si{' + y['siunitx'] +  r'})$'
+        text = r'$R_{\text{NL}}^+$' + ' $(\si{' + y['siunitx'] +  r'})$'
         super().add_ylabel(text)
 
 def main():
