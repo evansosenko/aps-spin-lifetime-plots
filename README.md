@@ -1,4 +1,4 @@
-# Plots for APS Spin Lifetime
+# Plots for APS Spin Lifetime Paper
 
 ## Requirements
 
