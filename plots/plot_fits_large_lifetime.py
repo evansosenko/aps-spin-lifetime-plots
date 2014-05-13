@@ -41,8 +41,8 @@ def main():
     plots[-1].add_xlabel()
     matplotlib.pyplot.setp(plots[0].plt.get_xticklabels(), visible=False)
 
-    figure.savefig(os.path.join('build', 'plot_large_lifetime.eps'), transparent=True)
-    plots[0].fit.save_info('build/plot_large_lifetime_info.tex', 'plotLargeLifetimeInfo')
+    figure.savefig(os.path.join('build', 'plot_fits_large_lifetime.eps'), transparent=True)
+    plots[0].fit.save_info('build/plot_fits_large_lifetime_info.tex', 'plotFitsLargeLifetimeInfo')
     Plot.close_figure(figure)
 
 if __name__ == '__main__':
