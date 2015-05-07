@@ -44,7 +44,7 @@ This code is licensed under the MIT license
 with the exception of any files under the path `json`.
 
 The fits under the path `json` were generated using
-[razor-x/spin-lifetime-analysis](https://github.com/razor-x/spin-lifetime-analysis),
+[evansosenko/spin-lifetime-analysis](https://github.com/evansosenko/spin-lifetime-analysis),
 and use data presented in:
 
 > [Tunneling Spin Injection into Single Layer Graphene](http://link.aps.org/doi/10.1103/PhysRevLett.105.167202).
