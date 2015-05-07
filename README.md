@@ -1,5 +1,7 @@
 # Plots for APS Spin Lifetime Paper
 
+[![MIT License](https://img.shields.io/github/license/evansosenko/aps-spin-lifetime-plots.svg)](./LICENSE.txt)
+
 ## Requirements
 
 - [Python 3](http://www.python.org/)
