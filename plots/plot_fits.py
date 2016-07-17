@@ -15,7 +15,7 @@ class Plot(Plot):
         super().add_ylabel(text)
 
 def main():
-    figure = Plot.new_figure(figsize=(5,10))
+    figure = Plot.new_figure(figsize=(12,10))
     fit_ids = ['a', 'b', 'c', 'd']
 
     def data_path(fit_id):
@@ -36,12 +36,10 @@ def main():
 
     plots = []
     for idx, fit in enumerate(fits):
-        n, m = 4, 1
-
+        m, n = 2, 2
         options = {}
-        if idx != 0: options['sharex'] = plots[idx - 1].plt
 
-        plot = Plot(fit, figure.add_subplot(n, m, (m * idx + 1), **options))
+        plot = Plot(fit, figure.add_subplot(n, m, (idx + 1), **options))
         plot.id = fit_ids[idx]
         plots.append(plot)
 
@@ -49,15 +47,16 @@ def main():
         plot.plot_data()
         plot.plot_fit()
 
-        if idx == 2:
+        if idx == 0:
             plot.add_ylabel(False)
         else:
             plot.add_ylabel(True)
 
         plot.add_parameter_overlay()
 
-    plots[-1].add_xlabel()
-    matplotlib.pyplot.setp([ p.plt.get_xticklabels() for p in plots[0:3] ], visible=False)
+    plots[2].add_xlabel()
+    plots[3].add_xlabel()
+    matplotlib.pyplot.setp([ p.plt.get_xticklabels() for p in plots[0:2] ], visible=False)
 
     figure.savefig(os.path.join('build', 'plot_fits.eps'), transparent=True)
     plots[0].fit.save_info('build/plot_fits_info.tex', 'plotFitsInfo')
